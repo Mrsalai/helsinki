@@ -2,46 +2,19 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <list>
 using namespace std;
-//Hasznaltam github copilotot....
 
-    string temphelyezes;
-    string tempember;
-    string sporttag;
-    string verseny;
-    string vonal;
-    string ltsporttag;
-    string ltsverseny;
+    string temphelyezes, tempember, sporttag, verseny, vonal, ltsporttag, ltsverseny;
     ifstream helsinki;
     ofstream helsinki2;
 
+    int helyezes, osszehlyezes, arany, ezüst, bronz, osszerem, pontok, ember, legtobbsportoló, ltshelyezes, ltsemberek, kajakkenu, vivas, torna, uszas, atletika, kosarlabda, vizilabda, gerenda, legtobbsport, sorpontok;
 
-    int helyezes;
-    int osszehlyezes = 0;
-    int arany = 0;
-    int ezüst = 0;
-    int bronz = 0;
-    int osszerem = 0;
-    int pontok = 0;
-    int ember;
-    int legtobbsportoló = 0;
-    int ltshelyezes = 0;
-    int ltsemberek= 0;
-    int kajakkenu = 0;
-    int vivas = 0;
-    int torna = 0;
-    int uszas = 0;
-    int atletika = 0;
-    int kosarlabda = 0;
-    int vizilabda = 0;
-    int gerenda = 0;
-    int legtobbsport = 0;
-    int sorpontok = 0;
 
-void doc()
-{
+    list<int> helyezesek;
+    list<int> emberek;
 
-}
 void negyedik()
 {
            if (helyezes == 1) {
@@ -138,14 +111,21 @@ int main() {
         while (getline(helsinki, vonal)) {
             stringstream ss(vonal);
             getline(ss, temphelyezes, ' ');
+
             helyezes = stoi(temphelyezes);
+            helyezesek.push_back(helyezes);
+            for (int item : helyezesek)
+            cout << item << " ";
             getline(ss, tempember, ' ');
             ember = stoi(tempember);
+            emberek.push_back(ember);
             getline(ss, sporttag, ' ');
             getline(ss, verseny, ' ');
 
             //harmadik feladat;
             osszehlyezes++;
+            int mindenhelyezes = 0;
+            mindenhelyezes = accumulate(helyezesek.begin(), helyezesek.end(), mindenhelyezes);
             //negyedik feladat
             negyedik();
             //hatodik feladat
