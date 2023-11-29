@@ -3,13 +3,15 @@
 #include <string>
 #include <sstream>
 #include <list>
+#include <cmath>
+
 using namespace std;
 
     string temphelyezes, tempember, sporttag, verseny, vonal, ltsporttag, ltsverseny;
     ifstream helsinki;
     ofstream helsinki2;
 
-    int helyezes, osszehlyezes, arany, ezüst, bronz, osszerem, pontok, ember, legtobbsportoló, ltshelyezes, ltsemberek, kajakkenu, vivas, torna, uszas, atletika, kosarlabda, vizilabda, gerenda, legtobbsport, sorpontok;
+    int osszitem, listhelyezes, helyezes, osszehlyezes, arany, ezüst, bronz, osszerem, pontok, ember, legtobbsportoló, ltshelyezes, ltsemberek, kajakkenu, vivas, torna, uszas, atletika, kosarlabda, vizilabda, gerenda, legtobbsport, sorpontok;
 
 
     list<int> helyezesek;
@@ -115,7 +117,7 @@ int main() {
             helyezes = stoi(temphelyezes);
             helyezesek.push_back(helyezes);
             for (int item : helyezesek)
-            cout << item << " ";
+                helyezes + 1;
             getline(ss, tempember, ' ');
             ember = stoi(tempember);
             emberek.push_back(ember);
@@ -124,8 +126,6 @@ int main() {
 
             //harmadik feladat;
             osszehlyezes++;
-            int mindenhelyezes = 0;
-            mindenhelyezes = accumulate(helyezesek.begin(), helyezesek.end(), mindenhelyezes);
             //negyedik feladat
             negyedik();
             //hatodik feladat
