@@ -19,34 +19,35 @@ using namespace std;
 
 void negyedik()
 {
-           if (helyezes == 1) {
+
+           if (helyezesek.back() == 1) {
                 arany++;
                 pontok = pontok + 7;
                 sorpontok = 7;
             }
-            if (helyezes == 2) {
+            if (helyezesek.back() == 2) {
                 ezüst++;
                 pontok = pontok + 5;
                 sorpontok = 5;
             }
-            if (helyezes == 3) {
+            if (helyezesek.back() == 3) {
                 bronz++;
                 pontok = pontok + 4;
                 sorpontok = 4;
             }
-            if (helyezes == 4) {
+            if (helyezesek.back() == 4) {
                 pontok = pontok + 3;
                 sorpontok = 3;
             }
-            if (helyezes == 5) {
+            if (helyezesek.back() == 5) {
                 pontok = pontok + 2;
                 sorpontok = 2;
             }
-            if (helyezes == 6) {
+            if (helyezesek.back() == 6) {
                 pontok = pontok + 1;
                 sorpontok = 1;
             }
-            if (helyezes < 4) {
+            if (helyezesek.back() < 4) {
                 if (sporttag == "kajakkenu") {
                     kajakkenu++;
                 }
@@ -113,19 +114,15 @@ int main() {
         while (getline(helsinki, vonal)) {
             stringstream ss(vonal);
             getline(ss, temphelyezes, ' ');
-
             helyezes = stoi(temphelyezes);
             helyezesek.push_back(helyezes);
-            for (int item : helyezesek)
-                helyezes + 1;
             getline(ss, tempember, ' ');
             ember = stoi(tempember);
             emberek.push_back(ember);
             getline(ss, sporttag, ' ');
             getline(ss, verseny, ' ');
 
-            //harmadik feladat;
-            osszehlyezes++;
+            //harmadik feladat
             //negyedik feladat
             negyedik();
             //hatodik feladat
@@ -143,7 +140,7 @@ int main() {
         //KIIRÁSOK
         //harmadik feladat ha jól ertelmezem akkor minden sportolónak szamít a helyezese
         cout << "3. feladat: " << endl;
-        cout << "ennyi helyezest ertek el: " << osszehlyezes << endl << endl;
+        cout << "ennyi helyezest ertek el: " << helyezesek.size() << endl << endl;
         //negyedik feladat
         cout << "4. feladat: " << endl;
         cout << "ennyi arany ermet szereztek: " << arany << endl;
