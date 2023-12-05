@@ -14,40 +14,43 @@ using namespace std;
     int osszitem, listhelyezes, helyezes, osszehlyezes, arany, ezüst, bronz, osszerem, pontok, ember, legtobbsportoló, ltshelyezes, ltsemberek, kajakkenu, vivas, torna, uszas, atletika, kosarlabda, vizilabda, gerenda, legtobbsport, sorpontok;
 
 
-    list<int> helyezesek;
-    list<int> emberek;
+    list<int> helyezeseklist;
+    list<int> embereklist;
+    list<string> sporttaglist;
+    list<string> versenylist;
+
 
 void negyedik()
 {
 
-           if (helyezesek.back() == 1) {
+           if (helyezeseklist.back() == 1) {
                 arany++;
                 pontok = pontok + 7;
                 sorpontok = 7;
             }
-            if (helyezesek.back() == 2) {
+            if (helyezeseklist.back() == 2) {
                 ezüst++;
                 pontok = pontok + 5;
                 sorpontok = 5;
             }
-            if (helyezesek.back() == 3) {
+            if (helyezeseklist.back() == 3) {
                 bronz++;
                 pontok = pontok + 4;
                 sorpontok = 4;
             }
-            if (helyezesek.back() == 4) {
+            if (helyezeseklist.back() == 4) {
                 pontok = pontok + 3;
                 sorpontok = 3;
             }
-            if (helyezesek.back() == 5) {
+            if (helyezeseklist.back() == 5) {
                 pontok = pontok + 2;
                 sorpontok = 2;
             }
-            if (helyezesek.back() == 6) {
+            if (helyezeseklist.back() == 6) {
                 pontok = pontok + 1;
                 sorpontok = 1;
             }
-            if (helyezesek.back() < 4) {
+            if (helyezeseklist.back() < 4) {
                 if (sporttag == "kajakkenu") {
                     kajakkenu++;
                 }
@@ -97,13 +100,13 @@ void hatodik()
 
 void hetedik()
 {
-    if (ember > legtobbsportoló)
+    if (embereklist.back() > legtobbsportoló)
             {
-                legtobbsportoló = ember;
+                legtobbsportoló = embereklist.back();
                 ltshelyezes = helyezes;
                 ltsporttag = sporttag;
                 ltsverseny = verseny;
-                ltsemberek = ember;
+                ltsemberek = embereklist.back();
             }
 }
 int main() {
@@ -115,11 +118,12 @@ int main() {
             stringstream ss(vonal);
             getline(ss, temphelyezes, ' ');
             helyezes = stoi(temphelyezes);
-            helyezesek.push_back(helyezes);
+            helyezeseklist.push_back(helyezes);
             getline(ss, tempember, ' ');
             ember = stoi(tempember);
-            emberek.push_back(ember);
+            embereklist.push_back(ember);
             getline(ss, sporttag, ' ');
+            sporttaglist.push_back(sporttag);
             getline(ss, verseny, ' ');
 
             //harmadik feladat
@@ -140,7 +144,7 @@ int main() {
         //KIIRÁSOK
         //harmadik feladat ha jól ertelmezem akkor minden sportolónak szamít a helyezese
         cout << "3. feladat: " << endl;
-        cout << "ennyi helyezest ertek el: " << helyezesek.size() << endl << endl;
+        cout << "ennyi helyezest ertek el: " << helyezeseklist.size() << endl << endl;
         //negyedik feladat
         cout << "4. feladat: " << endl;
         cout << "ennyi arany ermet szereztek: " << arany << endl;
