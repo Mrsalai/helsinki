@@ -22,36 +22,23 @@ using namespace std;
 
 void negyedik()
 {
+    switch(helyezeseklist.back()) {
+        case 1:
+            arany++;
+            pontok = pontok + 7;
+            sorpontok = 7;
+            break;
+        case 2:
+            ezüst++;
 
-           if (helyezeseklist.back() == 1) {
-                arany++;
-                pontok = pontok + 7;
-                sorpontok = 7;
-            }
-            if (helyezeseklist.back() == 2) {
-                ezüst++;
-                pontok = pontok + 5;
-                sorpontok = 5;
-            }
-            if (helyezeseklist.back() == 3) {
-                bronz++;
-                pontok = pontok + 4;
-                sorpontok = 4;
-            }
-            if (helyezeseklist.back() == 4) {
-                pontok = pontok + 3;
-                sorpontok = 3;
-            }
-            if (helyezeseklist.back() == 5) {
-                pontok = pontok + 2;
-                sorpontok = 2;
-            }
-            if (helyezeseklist.back() == 6) {
-                pontok = pontok + 1;
-                sorpontok = 1;
-            }
-            if (helyezeseklist.back() < 4) {
-                if (sporttag == "kajakkenu") {
+            break;
+        case 3:
+            bronz++;
+
+            break;
+    }
+    if(helyezeseklist.back() < 4) {
+        if (sporttag == "kajakkenu") {
                     kajakkenu++;
                 }
                 if (sporttag == "vivas") {
@@ -74,12 +61,42 @@ void negyedik()
                 }
                 if (sporttag == "gerenda") {
                     gerenda++;
+
+
                 }
-
-
+                osszerem = arany + ezüst + bronz;
             }
-            osszerem = arany + ezüst + bronz;
+}
+void otodik()
+{
 
+    switch(helyezeseklist.back())
+            {
+                case 1:
+                    pontok = pontok + 7;
+                    sorpontok = 7;
+                    break;
+                case 2:
+                    pontok = pontok + 5;
+                    sorpontok = 5;
+                    break;
+                case 3:
+                    pontok = pontok + 4;
+                    sorpontok = 4;
+                    break;
+                case 4:
+                    pontok = pontok + 3;
+                    sorpontok = 3;
+                    break;
+                case 5:
+                    pontok = pontok + 2;
+                    sorpontok = 2;
+                    break;
+                case 6:
+                    pontok = pontok + 1;
+                    sorpontok = 1;
+                    break;
+            }
 }
 void hatodik()
 {
