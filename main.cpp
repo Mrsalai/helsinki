@@ -13,7 +13,6 @@ using namespace std;
 
     int osszitem, listhelyezes, helyezes, osszehlyezes, arany, ezüst, bronz, osszerem, pontok, ember, legtobbsportoló, ltshelyezes, ltsemberek, kajakkenu, vivas, torna, uszas, atletika, kosarlabda, vizilabda, gerenda, legtobbsport, sorpontok;
 
-
     list<int> helyezeseklist;
     list<int> embereklist;
     list<string> sporttaglist;
