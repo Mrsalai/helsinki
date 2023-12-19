@@ -19,7 +19,6 @@ using namespace std;
     list<string> versenylist;
 
 
-
 void negyedik()
 {
     switch(helyezeseklist.back()) {
