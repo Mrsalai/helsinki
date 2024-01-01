@@ -10,7 +10,7 @@ using namespace std;
     string temphelyezes, tempember, sporttag, verseny, vonal, ltsporttag, ltsverseny;
     ifstream helsinki;
     ofstream helsinki2;
-    int osszitem, listhelyezes, helyezes, osszehlyezes, arany, ezüst, bronz, osszerem, pontok, ember, legtobbsportoló, ltshelyezes, ltsemberek, kajakkenu, vivas, torna, uszas, atletika, kosarlabda, vizilabda, gerenda, legtobbsport, sorpontok;
+    int osszitem, listhelyezes, helyezes, osszehlyezes, arany, ezüst, bronz, osszerem, pontok, ember, legtobbsportoló, ltshelyezes, ltsemberek, kajakkenu, vivas, torna, uszas, atletika, kosarlabda, vizilabda, gerenda, legtobbsport = 1, sorpontok;
 
     struct{
     list<int> helyezeseklist;
@@ -131,46 +131,41 @@ void otodik()
 
 void hatodik()
 {
-    if(helsinki2.is_open())
-            {
-                if(sporttag == "kajakkenu")
-                {
-                    sporttag = "kajak-kenu";
-                }
-                helsinki2 << "helyezes: " << helyezes << ", ember: " << ember << ", pontok: " << sorpontok << ", sportag: " << sporttag << ", verseny: " << verseny << endl;
-            }
-            else
-            {
-                cout << "Nem sikerült megyitni a helsinki2.txt-t" << endl;
-            }
+    if(sporttag == "kajakkenu")
+    {
+        sporttag = "kajak-kenu";
+    }
+    helsinki2 << "helyezes: " << helyezes << ", ember: " << ember << ", pontok: " << sorpontok << ", sportag: " << sporttag << ", verseny: " << verseny << endl;
 
-                    legtobbsport = max(kajakkenu,max(vivas, max(torna, max(uszas, max(atletika, max(kosarlabda, max(vizilabda, gerenda)))))));
-        cout << "6. feladat: " << endl;
-        if (legtobbsport == kajakkenu) {
-            cout << "A kajakkenu sporttagban szereztek a legtobb ermet." << endl;
-        }
-        if (legtobbsport == vivas) {
-            cout << "A vivas sporttagban szereztek a legtobb ermet." << endl;
-        }
-        if (legtobbsport == torna) {
-            cout << "A torna sporttagban szereztek a legtobb ermet." << endl;
-        }
-        if (legtobbsport == uszas) {
-            cout << "A uszas sporttagban szereztek a legtobb ermet." << endl;
-        }
-        if (legtobbsport == atletika) {
-            cout << "A atletika sporttagban szereztek a legtobb ermet." << endl;
-        }
-        if (legtobbsport == kosarlabda) {
-            cout << "A kosarlabda sporttagban szereztek a legtobb ermet." << endl;
-        }
-        if (legtobbsport == vizilabda) {
-            cout << "A vizilabda sporttagban szereztek a legtobb ermet." << endl;
-        }
-        if (legtobbsport == gerenda) {
-            cout << "A gerenda sporttagban szereztek a legtobb ermet." << endl;
-        }
-        cout << endl;
+    legtobbsport = max(kajakkenu,max(vivas, max(torna, max(uszas, max(atletika, max(kosarlabda, max(vizilabda, gerenda)))))));
+
+
+    cout << "6. feladat: " << endl;
+    if (legtobbsport == kajakkenu) {
+        cout << "A kajakkenu sporttagban szereztek a legtobb ermet." << endl;
+    }
+    if (legtobbsport == vivas) {
+        cout << "A vivas sporttagban szereztek a legtobb ermet." << endl;
+    }
+    if (legtobbsport == torna) {
+        cout << "A torna sporttagban szereztek a legtobb ermet." << endl;
+    }
+    if (legtobbsport == uszas) {
+        cout << "A uszas sporttagban szereztek a legtobb ermet." << endl;
+    }
+    if (legtobbsport == atletika) {
+        cout << "A atletika sporttagban szereztek a legtobb ermet." << endl;
+    }
+    if (legtobbsport == kosarlabda) {
+        cout << "A kosarlabda sporttagban szereztek a legtobb ermet." << endl;
+    }
+    if (legtobbsport == vizilabda) {
+        cout << "A vizilabda sporttagban szereztek a legtobb ermet." << endl;
+    }
+    if (legtobbsport == gerenda) {
+        cout << "A gerenda sporttagban szereztek a legtobb ermet." << endl;
+    }
+    cout << endl;
 }
 
 void hetedik()
@@ -195,14 +190,13 @@ void nyolcadik()
         cout << "Versenyszam: " << ltsverseny << endl;
         cout << "Sportolok szama: " << ltsemberek << endl;
 
-        helsinki2.close();
-        helsinki.close();
+
 }
 int main() {
     helsinki.open("helsinki.txt");
-    helsinki2.open(("helsinki2.txt"));
+    helsinki2.open("helsinki2.txt");
 
-
+    masodik();
     harmadik();
     negyedik();
     otodik();
@@ -210,5 +204,7 @@ int main() {
     hetedik();
     nyolcadik();
 
+    helsinki2.close();
+    helsinki.close();
     return 0;
 }

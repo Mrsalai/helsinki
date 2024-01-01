@@ -1,1 +1,1 @@
-helyezes: 0, ember: 0, pontok: 0, sportag: , verseny: 
+helyezes: 6, ember: 8, pontok: 1, sportag: torna, verseny: osszetett_csapat
