@@ -20,31 +20,14 @@ using namespace std;
     }helsinkistruct;
 
 
-void masodik()
-{
-    while (getline(helsinki, vonal))
-    {
-        stringstream ss(vonal);
-        getline(ss, temphelyezes, ' ');
-        helyezes = stoi(temphelyezes);
-        helsinkistruct.helyezeseklist.push_back(helyezes);
-        getline(ss, tempember, ' ');
-        ember = stoi(tempember);
-        helsinkistruct.embereklist.push_back(ember);
-        getline(ss, sporttag, ' ');
-        helsinkistruct.sporttaglist.push_back(sporttag);
-        getline(ss, verseny, ' ');
-    }
-}
-void harmadik()
+
+void harmadikkiiras()
 {
     cout << "3. feladat: " << endl;
     cout << "ennyi helyezest ertek el: " << helsinkistruct.helyezeseklist.size() << endl << endl;
 }
-void negyedik()
-{
-    switch(helsinkistruct.helyezeseklist.back())
-    {
+void negyedikloop() {
+    switch (helsinkistruct.helyezeseklist.back()) {
         case 1:
             arany++;
             pontok = pontok + 7;
@@ -59,87 +42,93 @@ void negyedik()
 
             break;
     }
-    if(helsinkistruct.helyezeseklist.back() < 4) {
+    if (helsinkistruct.helyezeseklist.back() < 4) {
         if (sporttag == "kajakkenu") {
-                    kajakkenu++;
-                }
-                if (sporttag == "vivas") {
-                    vivas++;
-                }
-                if (sporttag == "torna") {
-                    torna++;
-                }
-                if (sporttag == "uszas") {
-                    uszas++;
-                }
-                if (sporttag == "atletika") {
-                    atletika++;
-                }
-                if (sporttag == "kosarlabda") {
-                    kosarlabda++;
-                }
-                if (sporttag == "vizilabda") {
-                    vizilabda++;
-                }
-                if (sporttag == "gerenda") {
-                    gerenda++;
+            kajakkenu++;
+        }
+        if (sporttag == "vivas") {
+            vivas++;
+        }
+        if (sporttag == "torna") {
+            torna++;
+        }
+        if (sporttag == "uszas") {
+            uszas++;
+        }
+        if (sporttag == "atletika") {
+            atletika++;
+        }
+        if (sporttag == "kosarlabda") {
+            kosarlabda++;
+        }
+        if (sporttag == "vizilabda") {
+            vizilabda++;
+        }
+        if (sporttag == "gerenda") {
+            gerenda++;
 
 
-                }
-                osszerem = arany + ezüst + bronz;
-            }
+        }
+        osszerem = arany + ezüst + bronz;
+    }
+}
+void negyedikkiiras()
+{
+
     cout << "4. feladat: " << endl;
     cout << "ennyi arany ermet szereztek: " << arany << endl;
     cout << "ennyi ezust ermet szereztek: " << ezüst << endl;
     cout << "ennyi bronz ermet szereztek: " << bronz << endl;
     cout << "ennyi ossz ermet szereztek: " << osszerem << endl << endl;
 }
-void otodik()
+void otodikloop() {
+    switch (helsinkistruct.helyezeseklist.back()) {
+        case 1:
+            pontok = pontok + 7;
+            sorpontok = 7;
+            break;
+        case 2:
+            pontok = pontok + 5;
+            sorpontok = 5;
+            break;
+        case 3:
+            pontok = pontok + 4;
+            sorpontok = 4;
+            break;
+        case 4:
+            pontok = pontok + 3;
+            sorpontok = 3;
+            break;
+        case 5:
+            pontok = pontok + 2;
+            sorpontok = 2;
+            break;
+        case 6:
+            pontok = pontok + 1;
+            sorpontok = 1;
+            break;
+    }
+}
+void otodikkiiras()
 {
-    switch(helsinkistruct.helyezeseklist.back())
-            {
-                case 1:
-                    pontok = pontok + 7;
-                    sorpontok = 7;
-                    break;
-                case 2:
-                    pontok = pontok + 5;
-                    sorpontok = 5;
-                    break;
-                case 3:
-                    pontok = pontok + 4;
-                    sorpontok = 4;
-                    break;
-                case 4:
-                    pontok = pontok + 3;
-                    sorpontok = 3;
-                    break;
-                case 5:
-                    pontok = pontok + 2;
-                    sorpontok = 2;
-                    break;
-                case 6:
-                    pontok = pontok + 1;
-                    sorpontok = 1;
-                    break;
-            }
-
-            cout << "5. feladat: " << endl;
-            cout << "osszesen ennyi pontot szereztek: " << pontok << endl << endl;
+    cout << "5. feladat: " << endl;
+    cout << "osszesen ennyi pontot szereztek: " << pontok << endl << endl;
 }
 
 
-void hatodik()
-{
-    if(sporttag == "kajakkenu")
-    {
+void hatodikloop() {
+    if (sporttag == "kajakkenu") {
         sporttag = "kajak-kenu";
     }
-    helsinki2 << "helyezes: " << helyezes << ", ember: " << ember << ", pontok: " << sorpontok << ", sportag: " << sporttag << ", verseny: " << verseny << endl;
+    helsinki2 << "helyezes: " << helyezes << ", ember: " << ember << ", pontok: " << sorpontok << ", sportag: "
+              << sporttag << ", verseny: " << verseny << endl;
 
-    legtobbsport = max(kajakkenu,max(vivas, max(torna, max(uszas, max(atletika, max(kosarlabda, max(vizilabda, gerenda)))))));
+    legtobbsport = max(kajakkenu,
+                       max(vivas, max(torna, max(uszas, max(atletika, max(kosarlabda, max(vizilabda, gerenda)))))));
 
-
+}
+void hatodikkiiras()
+{
     cout << "6. feladat: " << endl;
     if (legtobbsport == kajakkenu) {
         cout << "A kajakkenu sporttagban szereztek a legtobb ermet." << endl;
@@ -168,7 +157,7 @@ void hatodik()
     cout << endl;
 }
 
-void hetedik()
+void hetedikloop()
 {
     if (helsinkistruct.embereklist.back() > legtobbsportoló)
             {
@@ -181,7 +170,7 @@ void hetedik()
 }
 
 
-void nyolcadik()
+void nyolcadikkiiras()
 {
 
         cout << "8. feladat:" << endl;
@@ -192,17 +181,37 @@ void nyolcadik()
 
 
 }
+void masodikloop()
+{
+    while (getline(helsinki, vonal))
+    {
+        stringstream ss(vonal);
+        getline(ss, temphelyezes, ' ');
+        helyezes = stoi(temphelyezes);
+        helsinkistruct.helyezeseklist.push_back(helyezes);
+        getline(ss, tempember, ' ');
+        ember = stoi(tempember);
+        helsinkistruct.embereklist.push_back(ember);
+        getline(ss, sporttag, ' ');
+        helsinkistruct.sporttaglist.push_back(sporttag);
+        getline(ss, verseny, ' ');
+        negyedikloop();
+        otodikloop();
+        hatodikloop();
+        hetedikloop();
+
+    }
+}
 int main() {
     helsinki.open("helsinki.txt");
     helsinki2.open("helsinki2.txt");
 
-    masodik();
-    harmadik();
-    negyedik();
-    otodik();
-    hatodik();
-    hetedik();
-    nyolcadik();
+    masodikloop();
+    harmadikkiiras();
+    negyedikkiiras();
+    otodikkiiras();
+    hatodikkiiras();
+    nyolcadikkiiras();
 
     helsinki2.close();
     helsinki.close();
