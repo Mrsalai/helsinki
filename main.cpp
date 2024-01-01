@@ -10,19 +10,41 @@ using namespace std;
     string temphelyezes, tempember, sporttag, verseny, vonal, ltsporttag, ltsverseny;
     ifstream helsinki;
     ofstream helsinki2;
-
     int osszitem, listhelyezes, helyezes, osszehlyezes, arany, ezüst, bronz, osszerem, pontok, ember, legtobbsportoló, ltshelyezes, ltsemberek, kajakkenu, vivas, torna, uszas, atletika, kosarlabda, vizilabda, gerenda, legtobbsport, sorpontok;
 
+    struct{
     list<int> helyezeseklist;
     list<int> embereklist;
     list<string> sporttaglist;
     list<string> versenylist;
+    }helsinkistruct;
 
 
-
+void masodik()
+{
+    while (getline(helsinki, vonal))
+    {
+        stringstream ss(vonal);
+        getline(ss, temphelyezes, ' ');
+        helyezes = stoi(temphelyezes);
+        helsinkistruct.helyezeseklist.push_back(helyezes);
+        getline(ss, tempember, ' ');
+        ember = stoi(tempember);
+        helsinkistruct.embereklist.push_back(ember);
+        getline(ss, sporttag, ' ');
+        helsinkistruct.sporttaglist.push_back(sporttag);
+        getline(ss, verseny, ' ');
+    }
+}
+void harmadik()
+{
+    cout << "3. feladat: " << endl;
+    cout << "ennyi helyezest ertek el: " << helsinkistruct.helyezeseklist.size() << endl << endl;
+}
 void negyedik()
 {
-    switch(helyezeseklist.back()) {
+    switch(helsinkistruct.helyezeseklist.back())
+    {
         case 1:
             arany++;
             pontok = pontok + 7;
@@ -37,7 +59,7 @@ void negyedik()
 
             break;
     }
-    if(helyezeseklist.back() < 4) {
+    if(helsinkistruct.helyezeseklist.back() < 4) {
         if (sporttag == "kajakkenu") {
                     kajakkenu++;
                 }
@@ -66,11 +88,15 @@ void negyedik()
                 }
                 osszerem = arany + ezüst + bronz;
             }
+    cout << "4. feladat: " << endl;
+    cout << "ennyi arany ermet szereztek: " << arany << endl;
+    cout << "ennyi ezust ermet szereztek: " << ezüst << endl;
+    cout << "ennyi bronz ermet szereztek: " << bronz << endl;
+    cout << "ennyi ossz ermet szereztek: " << osszerem << endl << endl;
 }
 void otodik()
 {
-
-    switch(helyezeseklist.back())
+    switch(helsinkistruct.helyezeseklist.back())
             {
                 case 1:
                     pontok = pontok + 7;
@@ -97,7 +123,12 @@ void otodik()
                     sorpontok = 1;
                     break;
             }
+
+            cout << "5. feladat: " << endl;
+            cout << "osszesen ennyi pontot szereztek: " << pontok << endl << endl;
 }
+
+
 void hatodik()
 {
     if(helsinki2.is_open())
@@ -113,69 +144,7 @@ void hatodik()
                 cout << "Nem sikerült megyitni a helsinki2.txt-t" << endl;
             }
 
-}
-
-void hetedik()
-{
-    if (embereklist.back() > legtobbsportoló)
-            {
-                legtobbsportoló = embereklist.back();
-                ltshelyezes = helyezes;
-                ltsporttag = sporttag;
-                ltsverseny = verseny;
-                ltsemberek = embereklist.back();
-            }
-}
-int main() {
-    helsinki.open("helsinki.txt");
-    helsinki2.open(("helsinki2.txt"));
-    if (helsinki.is_open()) {
-        //masodik feladat
-        while (getline(helsinki, vonal)) {
-            stringstream ss(vonal);
-            getline(ss, temphelyezes, ' ');
-            helyezes = stoi(temphelyezes);
-            helyezeseklist.push_back(helyezes);
-            getline(ss, tempember, ' ');
-            ember = stoi(tempember);
-            embereklist.push_back(ember);
-            getline(ss, sporttag, ' ');
-            sporttaglist.push_back(sporttag);
-            getline(ss, verseny, ' ');
-
-            //harmadik feladat
-            //negyedik feladat
-            negyedik();
-            //hatodik feladat
-            hatodik();
-            //hetedik feladat
-            hetedik();
-
-        }
-    }
-    else
-    {
-        cout << "Nem sikerult megyitni a helsinki.txt-t" << endl;
-    }
-
-        //KIIRÁSOK
-        //harmadik feladat ha jól ertelmezem akkor minden sportolónak szamít a helyezese
-        cout << "3. feladat: " << endl;
-        cout << "ennyi helyezest ertek el: " << helyezeseklist.size() << endl << endl;
-        //negyedik feladat
-        cout << "4. feladat: " << endl;
-        cout << "ennyi arany ermet szereztek: " << arany << endl;
-        cout << "ennyi ezust ermet szereztek: " << ezüst << endl;
-        cout << "ennyi bronz ermet szereztek: " << bronz << endl;
-        cout << "ennyi ossz ermet szereztek: " << osszerem << endl << endl;
-
-        //otodik feladat
-        cout << "5. feladat: " << endl;
-        cout << "osszesen ennyi pontot szereztek: " << pontok << endl << endl;
-
-        //hatodik feladat
-        legtobbsport = max(kajakkenu,
-                           max(vivas, max(torna, max(uszas, max(atletika, max(kosarlabda, max(vizilabda, gerenda)))))));
+                    legtobbsport = max(kajakkenu,max(vivas, max(torna, max(uszas, max(atletika, max(kosarlabda, max(vizilabda, gerenda)))))));
         cout << "6. feladat: " << endl;
         if (legtobbsport == kajakkenu) {
             cout << "A kajakkenu sporttagban szereztek a legtobb ermet." << endl;
@@ -202,8 +171,24 @@ int main() {
             cout << "A gerenda sporttagban szereztek a legtobb ermet." << endl;
         }
         cout << endl;
+}
 
-        //nyolcadik feladat
+void hetedik()
+{
+    if (helsinkistruct.embereklist.back() > legtobbsportoló)
+            {
+                legtobbsportoló = helsinkistruct.embereklist.back();
+                ltshelyezes = helyezes;
+                ltsporttag = sporttag;
+                ltsverseny = verseny;
+                ltsemberek = helsinkistruct.embereklist.back();
+            }
+}
+
+
+void nyolcadik()
+{
+
         cout << "8. feladat:" << endl;
         cout << "Helyezes: " << ltshelyezes << endl;
         cout << "Sportag: " << ltsporttag << endl;
@@ -212,6 +197,18 @@ int main() {
 
         helsinki2.close();
         helsinki.close();
+}
+int main() {
+    helsinki.open("helsinki.txt");
+    helsinki2.open(("helsinki2.txt"));
 
-        return 0;
-    }
+
+    harmadik();
+    negyedik();
+    otodik();
+    hatodik();
+    hetedik();
+    nyolcadik();
+
+    return 0;
+}
