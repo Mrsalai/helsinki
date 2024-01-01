@@ -109,6 +109,7 @@ void otodikloop() {
             break;
     }
 }
+
 void otodikkiiras()
 {
     cout << "5. feladat: " << endl;
